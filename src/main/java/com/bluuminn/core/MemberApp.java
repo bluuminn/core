@@ -3,11 +3,11 @@ package com.bluuminn.core;
 import com.bluuminn.core.member.Grade;
 import com.bluuminn.core.member.Member;
 import com.bluuminn.core.member.MemberService;
-import com.bluuminn.core.member.MemberServiceImpl;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 

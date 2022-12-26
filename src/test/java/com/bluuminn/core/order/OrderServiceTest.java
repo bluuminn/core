@@ -1,17 +1,25 @@
 package com.bluuminn.core.order;
 
+import com.bluuminn.core.AppConfig;
 import com.bluuminn.core.member.Grade;
 import com.bluuminn.core.member.Member;
 import com.bluuminn.core.member.MemberService;
-import com.bluuminn.core.member.MemberServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     void createOrder() {
