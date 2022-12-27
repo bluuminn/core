@@ -7,21 +7,28 @@ import com.bluuminn.core.member.MemberServiceImpl;
 import com.bluuminn.core.member.MemoryMemberRepository;
 import com.bluuminn.core.order.OrderService;
 import com.bluuminn.core.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AppConfig {
 
-    public MemberService memberService() {
+    @Bean
+    public MemberService memberService() { // 빈의 이름은 기본적으로 메서드명으로 등록된다.
         return new MemberServiceImpl(memberRepository());
     }
 
-    private static MemoryMemberRepository memberRepository() {
+    @Bean
+    public MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
