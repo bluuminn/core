@@ -1,7 +1,7 @@
 package com.bluuminn.core;
 
 import com.bluuminn.core.discount.DiscountPolicy;
-import com.bluuminn.core.discount.FixDiscountPolicy;
+import com.bluuminn.core.discount.RateDiscountPolicy;
 import com.bluuminn.core.member.MemberService;
 import com.bluuminn.core.member.MemberServiceImpl;
 import com.bluuminn.core.member.MemoryMemberRepository;
@@ -23,6 +23,6 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
